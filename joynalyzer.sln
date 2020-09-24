@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "program", "program\program.fsproj", "{B18EFE51-1854-4578-A3C6-28AB27E82E57}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "joynalyzer", "joynalyzer\joynalyzer.fsproj", "{672C2E7A-24FF-4790-8429-956C108278EE}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "tests", "tests\tests.fsproj", "{3CA5C91D-093D-4882-82BF-44F4A77B57FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B18EFE51-1854-4578-A3C6-28AB27E82E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18EFE51-1854-4578-A3C6-28AB27E82E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18EFE51-1854-4578-A3C6-28AB27E82E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18EFE51-1854-4578-A3C6-28AB27E82E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672C2E7A-24FF-4790-8429-956C108278EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672C2E7A-24FF-4790-8429-956C108278EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672C2E7A-24FF-4790-8429-956C108278EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672C2E7A-24FF-4790-8429-956C108278EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA5C91D-093D-4882-82BF-44F4A77B57FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA5C91D-093D-4882-82BF-44F4A77B57FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA5C91D-093D-4882-82BF-44F4A77B57FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA5C91D-093D-4882-82BF-44F4A77B57FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
