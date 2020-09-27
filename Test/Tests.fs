@@ -44,23 +44,23 @@ let Implications() =
 
 [<Fact>]
 let HasAnyContradiciton() =
-   let case = Eval.HasAnyContraction (RequiredResult.All ([
+   let case = Eval.HasAnyContradiction (RequiredResult.All ([
                                                                    RequiredResult.SymbolToHave("A", true);
                                                                    RequiredResult.SymbolToHave("A", false)
                                                                ]))
    Assert.Equal((true, Map.empty), case)
 
-   let case = Eval.HasAnyContraction (RequiredResult.All ([
+   let case = Eval.HasAnyContradiction (RequiredResult.All ([
                                                                    RequiredResult.SymbolToHave("A", false);
                                                                    RequiredResult.SymbolToHave("A", false)
                                                                ]))
    Assert.Equal((false, Map.add "A" false Map.empty), case)
-   let (hasContradictions, _) = Eval.GetRequirementsForExpression (And((Negation(Symbol "C")), (Symbol "C"))) true |> Eval.HasAnyContraction;
+   let (hasContradictions, _) = Eval.GetRequirementsForExpression (And((Negation(Symbol "C")), (Symbol "C"))) true |> Eval.HasAnyContradiction;
    Assert.True hasContradictions
 
    let example = (Negation(Implication(Symbol("P"), Or(Symbol("P"), Symbol("Q")))))
    let res = Eval.GetRequirementsForExpression example true;
-   Assert.True (res |> Eval.HasAnyContraction |> fst)
+   Assert.True (res |> Eval.HasAnyContradiction |> fst)
 
    let res = Eval.GetRequirementsForExpression example false;
 
@@ -74,7 +74,7 @@ let HasAnyContradiciton() =
      [ SymbolToHave("P", false);
       Any [ SymbolToHave("P", true); SymbolToHave("Q", true) ] ] ])
    Assert.Equal(expected, res)
-   Assert.False (res |> Eval.HasAnyContraction |> fst)
+   Assert.False (res |> Eval.HasAnyContradiction |> fst)
 
 [<Fact>]
 let EvalAnd() =
@@ -139,21 +139,21 @@ let AnyContradiction() =
         All [ SymbolToHave("T", true); SymbolToHave("T", false) ]
         All [ SymbolToHave("T", true); SymbolToHave("T", true) ]
         All [ SymbolToHave("T", false); SymbolToHave("T", true) ]
-    ] |> Eval.HasAnyContraction
+    ] |> Eval.HasAnyContradiction
       |> fst
       |> Assert.False
 
     Any [
         All [ SymbolToHave("T", true); SymbolToHave("T", false) ]
         All [ SymbolToHave("T", false); SymbolToHave("T", true) ]
-    ] |> Eval.HasAnyContraction
+    ] |> Eval.HasAnyContradiction
       |> fst
       |> Assert.True
 
     All [
         All [ SymbolToHave("T", true); SymbolToHave("F", false) ]
         All [ SymbolToHave("T", false); SymbolToHave("F", false) ]
-    ] |> Eval.HasAnyContraction
+    ] |> Eval.HasAnyContradiction
       |> fst
       |> Assert.True
 
@@ -162,19 +162,19 @@ let AnyContradiction() =
 let Analyze() =
    Negation(Implication(Symbol("P"), Or(Symbol("P"), Symbol("Q"))))
     |> Eval.Analyze
-    |> fun x -> Assert.Equal(Result.Contradiction, x)
+    |> fun x -> Assert.Equal(Contradiction, x)
 
    Negation(Implication(Or(Implication(Symbol "P", Symbol "Q"), Symbol("P")), Symbol "Q"))
     |> Eval.Analyze
-    |> fun x -> Assert.Equal(Result.Contradiction, x)
+    |> fun x -> Assert.Equal(Contradiction, x)
 
    Negation(Implication(Or(Symbol "P", And(Symbol "P", Symbol "Q")), Symbol "P"))
     |> Eval.Analyze
-    |> fun x -> Assert.Equal(Result.Contradiction, x)
+    |> fun x -> Assert.Equal(Contradiction, x)
 
    Negation(Implication(Or(Symbol "P", Symbol "Q"), Symbol "Q"))
     |> Eval.Analyze
-    |> fun x -> Assert.Equal(Result.Contingency, x)
+    |> fun x -> Assert.Equal(Contingency, x)
 
    Implication (
                     Implication(Symbol "P", Symbol "Q"),
@@ -183,7 +183,7 @@ let Analyze() =
                                     Negation(Symbol "P")
                                 ))
         |> Eval.Analyze
-        |> fun x -> Assert.Equal(Result.Tautology, x)
+        |> fun x -> Assert.Equal(Tautology, x)
 
    // 2) C  Lista 3
    Negation(And(
@@ -191,7 +191,7 @@ let Analyze() =
                       Symbol "P"
                   ))
         |> Eval.Analyze
-        |> fun x -> Assert.Equal(Result.Tautology, x)
+        |> fun x -> Assert.Equal(Tautology, x)
 
    Implication (
                     Implication(Symbol "P", Symbol "Q"),
@@ -200,4 +200,4 @@ let Analyze() =
                                     Negation(Symbol "P")
                                 ))
         |> Eval.Analyze
-        |> fun x -> Assert.Equal(Result.Tautology, x)
+        |> fun x -> Assert.Equal(Tautology, x)

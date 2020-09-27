@@ -1,6 +1,6 @@
 ﻿namespace Joynalyzer
 
-type public Result = | Tautology | Contradiction | Contingency
+type public Result = Tautology | Contradiction | Contingency
 
 type Expression =
      | Symbol of string
@@ -21,7 +21,7 @@ type RequiredResult =
 
 
 module Eval =
-    let HasAnyContraction (r: RequiredResult): bool * Map<string, bool> =
+    let HasAnyContradiction (r: RequiredResult): bool * Map<string, bool> =
         let rec innerHasAnyContradiction (state: Map<string, bool>) v = match v with
          | SymbolToHave(t, v) -> match Map.tryFind t state with
             | Some(x) -> (not x = v, state)
@@ -74,7 +74,7 @@ module Eval =
     let Analyze (expression: Expression) =
         let r1 = GetRequirementsForExpression expression true 
         let r2 = GetRequirementsForExpression expression false 
-        match (r1 |> HasAnyContraction, r2 |> HasAnyContraction) with
+        match (r1 |> HasAnyContradiction, r2 |> HasAnyContradiction) with
             | (s1, s2) -> match (s1 |> fst, s2 |> fst) with
                 | (false, false) -> Contingency
                 | (true, false) -> Contradiction
