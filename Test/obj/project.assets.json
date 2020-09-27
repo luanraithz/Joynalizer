@@ -952,7 +952,7 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
-      "Eval/1.0.0": {
+      "Joynalizer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
         "dependencies": {
@@ -960,10 +960,10 @@
           "xunit": "2.4.1"
         },
         "compile": {
-          "bin/placeholder/Eval.dll": {}
+          "bin/placeholder/Joynalizer.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Eval.dll": {}
+          "bin/placeholder/Joynalizer.dll": {}
         }
       }
     }
@@ -3605,16 +3605,16 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "Eval/1.0.0": {
+    "Joynalizer/1.0.0": {
       "type": "project",
-      "path": "../joynalyzer/Eval.fsproj",
-      "msbuildProject": "../joynalyzer/Eval.fsproj"
+      "path": "../joynalyzer/Joynalizer.fsproj",
+      "msbuildProject": "../joynalyzer/Joynalizer.fsproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
-      "Eval >= 1.0.0",
       "FSharp.Core >= 4.7.1",
+      "Joynalizer >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "coverlet.collector >= 1.2.0",
       "xunit >= 2.4.0",
@@ -3652,8 +3652,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj": {
-              "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj"
+            "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Joynalizer.fsproj": {
+              "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Joynalizer.fsproj"
             }
           }
         }
@@ -3701,7 +3701,7 @@
       "code": "NU1605",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Detected package downgrade: xunit from 2.4.1 to 2.4.0. Reference the package directly from the project to select a different version. \r\n Test -> Eval -> xunit (>= 2.4.1) \r\n Test -> xunit (>= 2.4.0)",
+      "message": "Detected package downgrade: xunit from 2.4.1 to 2.4.0. Reference the package directly from the project to select a different version. \r\n Test -> Joynalizer -> xunit (>= 2.4.1) \r\n Test -> xunit (>= 2.4.0)",
       "libraryId": "xunit",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.0"

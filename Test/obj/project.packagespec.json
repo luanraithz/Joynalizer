@@ -20,8 +20,8 @@
     "frameworks": {
       "netcoreapp3.0": {
         "projectReferences": {
-          "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj": {
-            "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj"
+          "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Joynalizer.fsproj": {
+            "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Joynalizer.fsproj"
           }
         }
       }

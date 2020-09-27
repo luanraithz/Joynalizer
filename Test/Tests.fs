@@ -77,7 +77,7 @@ let HasAnyContradiciton() =
    Assert.False (res |> Eval.HasAnyContraction |> fst)
 
 [<Fact>]
-let analyze_required_and() =
+let EvalAnd() =
     let analyze s = Eval.GetRequirementsForExpression s;
     Assert.Equal (All ([ Nothing; SymbolToHave("A", true) ]),
                  analyze (And((Constant true), (Symbol "A"))) true)
@@ -106,7 +106,7 @@ let analyze_required_and() =
 
 
 [<Fact>]
-let analyze_required_or() =
+let EvalOr() =
     let analyze = Eval.GetRequirementsForExpression;
     Assert.Equal (Any ([ SymbolToHave("B", true); SymbolToHave("A", true) ]),
                  analyze (Or((Symbol "B"), (Symbol "A"))) true)

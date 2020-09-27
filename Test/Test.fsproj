@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\joynalyzer\Eval.fsproj" />
+      <ProjectReference Include="..\joynalyzer\Joynalizer.fsproj" />
     </ItemGroup>
 
 </Project>
