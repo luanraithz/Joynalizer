@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj",
-    "projectName": "Eval",
-    "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj",
-    "outputPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\obj\\",
+    "projectUniqueName": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\Program\\Program.fsproj",
+    "projectName": "Program",
+    "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\Program\\Program.fsproj",
+    "outputPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\Program\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -29,10 +29,6 @@
         "FSharp.Core": {
           "target": "Package",
           "version": "[4.7.1, )"
-        },
-        "xunit": {
-          "target": "Package",
-          "version": "[2.4.1, )"
         }
       },
       "imports": [

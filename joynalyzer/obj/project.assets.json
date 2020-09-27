@@ -4749,9 +4749,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\joynalyzer.fsproj",
-      "projectName": "joynalyzer",
-      "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\joynalyzer.fsproj",
+      "projectUniqueName": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj",
+      "projectName": "Eval",
+      "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj",
       "packagesPath": "C:\\Users\\Movidesk\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\obj\\",
       "projectStyle": "PackageReference",

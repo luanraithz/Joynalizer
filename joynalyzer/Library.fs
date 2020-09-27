@@ -1,4 +1,4 @@
-﻿namespace joynalyzer
+﻿namespace Joynalyzer
 
 type public Result = | Tautology | Contradiction | Contingency
 
@@ -19,38 +19,63 @@ type RequiredResult =
     | Impossible
     | Nothing
 
-module Joynalizer =
-    let rec get_required_for_for_result (exp: Expression) (r: bool): RequiredResult =
-        match exp with
-        | And(left, right) -> match (left, right, r) with
-            | (Constant(false), _, true) -> Impossible
-            | (_, Constant(false), true) -> Impossible
-            | (Constant(true), Constant(true), true) -> Nothing
-            | (Constant(true), Symbol(s), true) -> SymbolToHave(s, true)
-            | (Symbol(s), Constant(true), true) -> SymbolToHave(s, true)
-            | (Constant(false), Symbol(s), false) -> Any [ SymbolToHave(s, true); SymbolToHave(s, false) ]
-            | (Constant(true), And(left, right), true) -> get_required_for_for_result (And(left, right)) true
-            | (And(left, right), Constant(true), true) -> get_required_for_for_result (And(left, right)) true
-            | (_, Constant(false), false) -> Nothing
-            | (Symbol(s1), Symbol(s2), true) -> All [ SymbolToHave(s1, true); SymbolToHave(s2, true) ]
-            | (And(exp1, exp2), And(exp3, exp4), true) -> (
-                                                                    get_required_for_for_result (And(exp1, exp2))) @
-                                                                    get_required_for_for_result (And(exp3, exp4)) true
-                                                                ) with
-                | (_, Impossible) -> Impossible
-                | (Impossible, _) -> Impossible
-                | (All(list1), All(list2)) -> All (list1 @ list2)
-                | (All(list1), Any(list2)) -> Every ([All list1] @ [Any list2])
-                | (Any(list1), All(list2)) -> Every ([Any list1] @ [All list2])
-                | (Any(list1), Any(list2)) -> Every ([Any list1] @ [Any list2])
-                | _ -> Impossible
-            | _ -> Impossible
-        | _ -> Impossible;
-    let evalutate (ex: Expression) =
-         match ex with
-         | Constant(v) -> v
-         | _ -> false
 
-    type Entry = | Exp of Expression | String
-    let analyze (name: Entry) =
-        Tautology
+module Eval =
+    let HasAnyContraction (r: RequiredResult): bool * Map<string, bool> =
+        let rec innerHasAnyContradiction (state: Map<string, bool>) v = match v with
+         | SymbolToHave(t, v) -> match Map.tryFind t state with
+            | Some(x) -> (not x = v, state)
+            | None -> (false, (Map.add t v state))
+         | All(x) -> match (List.fold (fun (s: bool * Map<string, bool>) next -> match s with
+                                | (true, _) -> (true, state)
+                                | (false, s) -> innerHasAnyContradiction s next
+                                ) (false, state) x) with
+            | (true, _) -> (true, state)
+            | s -> s
+         | Any(x) -> match (List.fold (fun (s: bool * Map<string, bool>) next -> match s with
+                                | (false, s) -> (false, s)
+                                | (true, _) -> innerHasAnyContradiction state next
+                                ) (true, state) x) with
+            | (true, _) -> (true, state)
+            | s -> s
+         | _ -> (false, state)
+        innerHasAnyContradiction Map.empty r
+    let rec GetRequirementsForExpression (exp: Expression) (r: bool): RequiredResult =
+        match exp with
+        | And(left, right) -> match r with
+            | false -> Any ([
+                                              (All ([ (GetRequirementsForExpression left false); (GetRequirementsForExpression right false) ]))
+                                              (All ([ (GetRequirementsForExpression left true); (GetRequirementsForExpression right false) ]))
+                                              (All ([ (GetRequirementsForExpression left false); (GetRequirementsForExpression right true) ]))
+                                              ])
+            | true -> All [ (GetRequirementsForExpression left true); (GetRequirementsForExpression right true) ]
+        | Symbol(t) -> SymbolToHave(t, r)
+        | Constant(v) -> if v = r then Nothing else Impossible
+        | Negation(t) -> GetRequirementsForExpression t (not r)
+        | Or(left, right) -> match r with
+            | true -> Any [ (GetRequirementsForExpression left true); (GetRequirementsForExpression right true) ]
+            | false -> All [ (GetRequirementsForExpression left false); (GetRequirementsForExpression right false) ]
+        | Implication(s, v) -> match r with
+            | true -> Any ([
+                (All ([ (GetRequirementsForExpression s true); (GetRequirementsForExpression v true) ]))
+                (All ([ (GetRequirementsForExpression s false); (GetRequirementsForExpression v false) ]))
+                (All ([ (GetRequirementsForExpression s false); (GetRequirementsForExpression v true) ]))
+                ])
+            | false -> All ([ (GetRequirementsForExpression s true); (GetRequirementsForExpression v false) ])
+        | Equivalence(s, v) -> match r with
+            | true -> Any ([
+                (All ([ (GetRequirementsForExpression s true); (GetRequirementsForExpression v true) ]));
+                (All ([ (GetRequirementsForExpression s false); (GetRequirementsForExpression v false) ]));
+            ])
+            | false -> Any ([
+               (All ([ (GetRequirementsForExpression s false); (GetRequirementsForExpression v true) ]));
+               (All ([ (GetRequirementsForExpression s true); (GetRequirementsForExpression v false) ]));
+            ])
+    let Analyze (expression: Expression) =
+        let r1 = GetRequirementsForExpression expression true 
+        let r2 = GetRequirementsForExpression expression false 
+        match (r1 |> HasAnyContraction, r2 |> HasAnyContraction) with
+            | (s1, s2) -> match (s1 |> fst, s2 |> fst) with
+                | (false, false) -> Contingency
+                | (true, false) -> Contradiction
+                | _ -> Tautology

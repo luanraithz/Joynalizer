@@ -13,8 +13,7 @@
     <e p="C:\Users\Movidesk\RiderProjects\joynalyzer" t="IncludeFlat">
       <e p="joynalyzer" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="FindRequiredByType.fs" t="Include" />
-        <e p="joynalyzer.fsproj" t="IncludeRecursive" />
+        <e p="Eval.fsproj" t="IncludeRecursive" />
         <e p="Library.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
       </e>
@@ -26,12 +25,12 @@
         <e p="Program.fs" t="Include" />
         <e p="program.fsproj" t="IncludeRecursive" />
       </e>
-      <e p="tests" t="IncludeRecursive">
+      <e p="Test" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Program.fs" t="Include" />
+        <e p="Test.fsproj" t="IncludeRecursive" />
         <e p="Tests.fs" t="Include" />
-        <e p="tests.fsproj" t="IncludeRecursive" />
       </e>
     </e>
   </component>

@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "program", "program\program.fsproj", "{B18EFE51-1854-4578-A3C6-28AB27E82E57}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Program", "Program\Program.fsproj", "{B18EFE51-1854-4578-A3C6-28AB27E82E57}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "joynalyzer", "joynalyzer\joynalyzer.fsproj", "{672C2E7A-24FF-4790-8429-956C108278EE}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Eval", "joynalyzer\Eval.fsproj", "{672C2E7A-24FF-4790-8429-956C108278EE}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "tests", "tests\tests.fsproj", "{3CA5C91D-093D-4882-82BF-44F4A77B57FC}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Test", "Test\Test.fsproj", "{3CA5C91D-093D-4882-82BF-44F4A77B57FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

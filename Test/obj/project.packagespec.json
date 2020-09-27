@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj",
-    "projectName": "Eval",
-    "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj",
-    "outputPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\obj\\",
+    "projectUniqueName": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\Test\\Test.fsproj",
+    "projectName": "Test",
+    "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\Test\\Test.fsproj",
+    "outputPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\Test\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -19,7 +19,11 @@
     },
     "frameworks": {
       "netcoreapp3.0": {
-        "projectReferences": {}
+        "projectReferences": {
+          "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj": {
+            "projectPath": "C:\\Users\\Movidesk\\RiderProjects\\joynalyzer\\joynalyzer\\Eval.fsproj"
+          }
+        }
       }
     }
   },
@@ -30,9 +34,21 @@
           "target": "Package",
           "version": "[4.7.1, )"
         },
+        "Microsoft.NET.Test.Sdk": {
+          "target": "Package",
+          "version": "[16.5.0, )"
+        },
+        "coverlet.collector": {
+          "target": "Package",
+          "version": "[1.2.0, )"
+        },
         "xunit": {
           "target": "Package",
-          "version": "[2.4.1, )"
+          "version": "[2.4.0, )"
+        },
+        "xunit.runner.visualstudio": {
+          "target": "Package",
+          "version": "[2.4.0, )"
         }
       },
       "imports": [
